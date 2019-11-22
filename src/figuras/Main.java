@@ -10,12 +10,20 @@ private int figure;
         lblAltura.setVisible(false);
         txtAltura.setVisible(false);
     }
-    private void circuloActionPerformed(java.awt.event.ActionEvent evt){
-        if(evt.getSource().equals(circulo)){
+    private void mnicirculoActionPerformed(java.awt.event.ActionEvent evt){
+        if(evt.getSource().equals(mniCirculo)){
             figure = 0;
             lblAltura.setVisible(false);
             txtAltura.setVisible(false);
             lblRadio.setText("Radio");
+        }
+    }
+    private void mniTrianguloActionPerformed(java.awt.event.ActionEvent evt){
+        if(evt.getSource().equals(mniTriangulo)){
+            figure = 1;
+            lblAltura.setVisible(true);
+            txtAltura.setVisible(true);
+            lblRadio.setText("Base");
         }
     }
 
@@ -203,10 +211,19 @@ private int figure;
 
     private void btnDibujarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDibujarActionPerformed
         Circulo circulo;
-        circulo = new Circulo(Integer.parseInt(txtRadio.getText()));
-        txtPerimetro.setText(Float.toString(circulo.Area()));
-        txtArea.setText(Float.toString(circulo.Area()));
-        circulo.drawFigure(pnlCanvas.getGraphics());
+        Triangulo triangulo;
+        if(figure==0){
+            circulo = new Circulo(Integer.parseInt(txtRadio.getText()));
+            txtPerimetro.setText(Float.toString(circulo.Perimetro()));
+            txtArea.setText(Float.toString(circulo.Area()));
+            circulo.drawFigure(pnlCanvas.getGraphics());
+        }else if(figure==1){
+            triangulo= new Triangulo(Integer.parseInt(txtRadio.getText()),Integer.parseInt(txtAltura.getText()));
+            txtPerimetro.setText(Float.toString(triangulo.Perimetro()));
+            txtArea.setText(Float.toString(triangulo.Area()));
+            triangulo.drawFigure(pnlCanvas.getGraphics());
+            
+        }
     }//GEN-LAST:event_btnDibujarActionPerformed
 
 
